@@ -66,7 +66,9 @@
 
     function showCat() {
         $('#cat').fadeToggle(1000);
-        setTimeout(showCat, 1000);
+        setTimeout(function () { 
+            $('#cat').fadeToggle(1000);
+        }, 1000);
     };
 
     // Append the drink_type to drinks_ordered and use console.log to view the output
@@ -78,9 +80,9 @@
         var myRevenue = revenue();
         $('#revenue').html("Today's revenues: " + myRevenue);
 
-        $('#coffee_image').attr('src', "static/coffee_machine.jpg").fadeOut(500);
-        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_mug.jpg").fadeIn(500).fadeOut(500); }, 1000);
-        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_beans.jpg").fadeIn(500);}, 2000);
+        $('#coffee_image').attr('src', "static/coffee_machine.jpg").fadeToggle(500);
+        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_mug.jpg").fadeToggle(500).fadeToggle(500); }, 1000);
+        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_beans.jpg").fadeToggle(500);}, 2000);
     };
 
     // Create variables for Espresso, Latte, and Hot Chocolate;
