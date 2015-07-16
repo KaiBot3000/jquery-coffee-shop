@@ -9,6 +9,13 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link href="static/coffee.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+
+    <style>
+        #cat {
+            height: 300px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -17,6 +24,8 @@
         <br>
 
         <img id="coffee_image" src="FIXME" alt="make this image work" height="300" width="200">
+
+        <img id="cat" src="static/funny-cat-pictures-so-thats-coffee.jpg" alt="crazy-cat">
 
         <h3 id="message">Click The Image To Order Coffee</h3>
 
@@ -53,6 +62,12 @@
 
     $('#coffee_image').on('click', function () {
         makeCoffee("brew"); });
+    $('#coffee_image').on('click', showCat);
+
+    function showCat() {
+        $('#cat').fadeToggle(1000);
+        setTimeout(showCat, 1000);
+    };
 
     // Append the drink_type to drinks_ordered and use console.log to view the output
 
@@ -63,10 +78,10 @@
         var myRevenue = revenue();
         $('#revenue').html("Today's revenues: " + myRevenue);
 
-        $('#coffee_image').attr('src', "static/coffee_machine.jpg")
-        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_mug.jpg"); }, 500);
-        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_beans.jpg"); }, 1500);
-    }
+        $('#coffee_image').attr('src', "static/coffee_machine.jpg").fadeOut(500);
+        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_mug.jpg").fadeIn(500).fadeOut(500); }, 1000);
+        setTimeout(function () { $('#coffee_image').attr('src', "static/coffee_beans.jpg").fadeIn(500);}, 2000);
+    };
 
     // Create variables for Espresso, Latte, and Hot Chocolate;
     // and add an event listener to each that calls make_coffee
